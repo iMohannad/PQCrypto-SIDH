@@ -25,7 +25,6 @@ typedef mpz_t mp;
 
 
 typedef struct {
-
 	mp x0;
 	mp x1;
 } fp2;
@@ -1076,6 +1075,7 @@ mpz_set_str((P.x.x0),"0x77B3BB69009428A327D43CA60169715F547454F88CD213452DF58A72
 for(int i=0;i<100;i++)
 {
 xDBL(EA,&T,&T);
+gmp_printf("T > %Zx \n",T);
 }
 for(int i=0;i<100;i++)
 {
