@@ -1027,6 +1027,7 @@ static size_t get_np_len(const mp p) {
 
 int main()
 {
+  printf("initalize x0");
 	const sike_params_raw_t *params_raw = NULL;
 	params_raw = &SIKEp751;
 	sike_params_t params;
@@ -1049,7 +1050,6 @@ printf("\n");
   printf("b (fp2)= \n");
   gmp_printf(" %Zx \n",(EA->b).x1);
 */
-  printf("initalize x0");
   mont_pt_t T;
   mont_pt_t P,Q;
   mpz_init(T.x.x0);
@@ -1078,7 +1078,7 @@ printf("\n");
 
   for(int i=0;i<100;i++) {
     xDBL(EA,&T,&T);
-    gmp_printf("T > %Zx \n",T);
+    gmp_printf("T > %Zx \n", &T);
   }
 
   for(int i=0;i<100;i++) {
