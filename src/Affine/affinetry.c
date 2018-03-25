@@ -1,10 +1,10 @@
 #pragma comment(lib, "mpir.lib")
-#include<stdio.h>
-#include<math.h>
-#include<gmp.h>
-#include<stdlib.h>
-#include<string.h>
-#include<time.h>
+#include <stdio.h>
+#include <math.h>
+#include <gmp.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 #include <stdint.h>
 #include <malloc.h>
 #include <stdlib.h>
@@ -28,6 +28,11 @@ typedef struct {
 	mp x0;
 	mp x1;
 } fp2;
+
+typedef struct {
+  mp x;
+  mp y;
+} pt_t;
 
 typedef struct {
 	fp2 x;
@@ -1027,7 +1032,6 @@ static size_t get_np_len(const mp p) {
 
 int main()
 {
-  printf("initalize x0");
 	const sike_params_raw_t *params_raw = NULL;
 	params_raw = &SIKEp751;
 	sike_params_t params;
@@ -1064,7 +1068,6 @@ printf("\n");
 	mpz_init(Q.x.x1);
 	mpz_init(Q.y.x0);
 	mpz_init(Q.y.x1);
-  printf("Value Initalized");
   mpz_set_str((T.x.x0),"0x77B3BB69009428A327D43CA60169715F547454F88CD213452DF58A7252C2B3C3D00D52CCD3133D54041D8BCAEA291F2057202328712CD395575CD7CCD3CE70C0A1EBF633BA946559458878F41F9FDD1727E2C31125B2FE5B713067093331",0);
   mpz_set_str((T.x.x1),"0x6D91393A57DBF47FD6DCF841F17ECD719CAE1D33C6832A75B0F168855BCC38D2A4792DFF9BC86DEACA10B1AA808D539B167D73BBA32168687FA3F85AE93A1ADDE5BD1FD5B681DCC6C34454D4496976C22D80C95E42B12576FC0FB4074B9F",0);
 	mpz_set_str((T.y.x0),"0x53B55053E3F04FC315EFB1B7B2C4AFCB4FEF12CE744AF3B243C6E6B1417E94A78D4980DDE181896464923E01AACC3DA040A0747CA67554A352684DA207C49022D930732DF6BD0BF37E1F5C16917669A70F88059C1C739A79D7CFA0C529D9",0);
@@ -1078,7 +1081,7 @@ printf("\n");
 
   for(int i=0;i<100;i++) {
     xDBL(EA,&T,&T);
-    gmp_printf("T > %Zx \n", &T);
+    // gmp_printf("T > %Zx \n", &T);
   }
 
   for(int i=0;i<100;i++) {
